@@ -4,7 +4,7 @@
   "description": "A library that allows you to validate inputs on express routes via middlewares. It leverages the power of Joi with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your express server.",
   "main": "constraints.js",
   "scripts": {
-    "lint": "eslint --fix --ext .js",
+    "lint": "eslint --fix constraints.js constraints.unit.js",
     "test": "npm run coverage",
     "unit-test": "mocha constraints.unit.js",
     "coverage": "nyc --all --reporter=lcov --reporter text --reporter html npm run unit-test"
@@ -33,6 +33,7 @@
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.9.2",
     "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.2.2",
     "joi": "^10.6.0",
     "mocha": "^2.5.3",
     "mocha-multi": "^0.9.0",
