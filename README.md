@@ -86,7 +86,7 @@ webapp
 │       ├── accessToken.js
 │       ├── accountSignUp.js
 │       ├── index.js
-│       └── credentials.js
+│       ├── credentials.js
 │       └── pagination.js
 │
 ├── routes.js
