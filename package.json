@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/naveedn/vayder/issues"
   },
-  "homepage": "https://github.com/naveedn/vayder#readme"
+  "homepage": "https://github.com/naveedn/vayder#readme",
+  "devDependencies": {
+    "joi": "^10.6.0",
+    "node-mocks-http": "^1.6.4"
+  },
+  "dependencies": {
+    "celebrate": "^4.0.1"
+  }
 }
