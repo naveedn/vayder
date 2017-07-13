@@ -44,7 +44,7 @@ describe('Constraints Middleware', () => {
 
   it('should validate the headers', (done) => {
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
@@ -131,7 +131,7 @@ describe('Constraints Middleware', () => {
     };
 
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
@@ -249,7 +249,7 @@ describe('Constraints Middleware', () => {
     };
 
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
