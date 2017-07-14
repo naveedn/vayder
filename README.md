@@ -1,14 +1,6 @@
 # VAYDER
 A library that allows you to validate inputs on express routes via middlewares. It leverages the power of [Joi][1] and [Celebrate][2] with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your express server.
 
-## API:
-| method | description | inputs |
-| ------ | ----------- | ----- |
-| validateBody | will validate the body of the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
-| validateParams | will validate the URL parameters passed into the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
-| validateQuery | will validate the request query string against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
-| validateHeaders | will validate the request Headers against the provided Joi Schema | Joi schema, Joi Schema Options [optional]  |
-
 ## How to Use
 ### 1) Create a JOI schema
 
@@ -44,6 +36,15 @@ app.listen(3000, () => {
   console.log('Example app listening on port 3000!');
 });
 ```
+
+## API:
+| method | description | inputs |
+| ------ | ----------- | ----- |
+| validateBody | will validate the body of the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateParams | will validate the URL parameters passed into the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateQuery | will validate the request query string against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateHeaders | will validate the request Headers against the provided Joi Schema | Joi schema, Joi Schema Options [optional]  |
+
 
 ## Handling Errors
 As per Joi docs, any validation failure that is caught by Joi will be thown as an error with the `.isJoi` property attached to it. It is recommended to have an error handling middleware at the bottom of your app.js to handle this:
