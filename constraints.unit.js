@@ -44,7 +44,7 @@ describe('Constraints Middleware', () => {
 
   it('should validate the headers', (done) => {
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
@@ -131,7 +131,7 @@ describe('Constraints Middleware', () => {
     };
 
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
@@ -249,7 +249,7 @@ describe('Constraints Middleware', () => {
     };
 
     req.headers = {
-      Origin: 'http://www.example.lifion.com',
+      Origin: 'http://www.example.com',
       'X-Forwarded-For': '127.0.0.1',
     };
 
@@ -267,6 +267,34 @@ describe('Constraints Middleware', () => {
         throw new Error('Expected to receive validation error');
       } else {
         throw new Error('Recieved error - but not validation error');
+      }
+    });
+  });
+
+  it('should allow for options to be passed into the function', (done) => {
+    req.params = {
+      a: {
+        b: 'blah blah',
+        c: 1234234,
+      },
+      d: {
+        e: true,
+      },
+      unknownParameterBeingPassedIn: 'woohooooo',
+    };
+
+    const options = {
+      stripUnknown: true,
+    };
+
+    validatemw = constraints.validateParams(paramsSchema, options);
+
+    validatemw(req, res, (err) => {
+      if (err && err.isJoi) {
+        done(err);
+      } else {
+        expect(req.params.unknownParameterBeingPassedIn).to.not.exist;
+        done();
       }
     });
   });
