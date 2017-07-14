@@ -2,9 +2,16 @@
 A library that allows you to validate inputs on express routes via middlewares. It leverages the power of [Joi][1] and [Celebrate][2] with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your [Express][4] server.
 
 ## How to Use
-### 1) Create a JOI schema
+
+### 1) Install vayder
 
 ```
+npm install --save vayder
+```
+
+### 2) Create a JOI schema
+
+```javascript
 // schema.js
 
 const Joi = require('joi');
@@ -15,9 +22,9 @@ module.exports = Joi.object().keys({
 });
 ```
 
-### 2) Add it to your Express route
+### 3) Add it to your Express route
 
-```
+```javascript
 // app.js
 
 const express = require('express');
@@ -49,7 +56,7 @@ app.listen(3000, () => {
 ## Handling Errors
 As per Joi docs, any validation failure that is caught by Joi will be thown as an error with the `.isJoi` property attached to it. It is recommended to have an error handling middleware at the bottom of your app.js to handle this:
 
-```
+```javascript
 app.use('*', (err, req, res, next) => {
     if(err.isJoi) {
       // do stuff
@@ -65,7 +72,7 @@ app.use('*', (err, req, res, next) => {
 #### Multiple Validations
 You can do multiple validations in a very clear and concise syntax:
 
-```
+```javascript
 app.get('/',
   vayder.validateHeaders(AuthenticationSchema),
   vayder.validateQuery(paginationSchema),
@@ -108,7 +115,7 @@ webapp
 
 Then, in the `models/validations/index.js` file, you can manage a single entry point to all the validations:
 
-```
+```javascript
 // index.js
 
 module.exports = {
@@ -121,7 +128,7 @@ module.exports = {
 
 This makes for a cleaner interface when validating routes:
 
-```
+```javascript
 // routes.js
 const vayder = require('vayder');
 const schemas = require('./models/validations');
