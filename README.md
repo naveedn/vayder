@@ -2,12 +2,12 @@
 A library that allows you to validate inputs on express routes via middlewares. It leverages the power of [Joi][1] and [Celebrate][2] with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your express server.
 
 ## API:
-| method | description | input |
+| method | description | inputs |
 | ------ | ----------- | ----- |
-| validateBody | will validate the body of the request against the provided Joi Schema | Joi Schema |
-| validateParams | will validate the URL parameters passed into the request against the provided Joi Schema | Joi Schema |
-| validateQuery | will validate the request query string against the provided Joi Schema | Joi Schema |
-| validateHeaders | will validate the request Headers against the provided Joi Schema | Joi schema |
+| validateBody | will validate the body of the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateParams | will validate the URL parameters passed into the request against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateQuery | will validate the request query string against the provided Joi Schema | Joi Schema, Joi Schema Options [optional] |
+| validateHeaders | will validate the request Headers against the provided Joi Schema | Joi schema, Joi Schema Options [optional]  |
 
 ## How to Use
 ### 1) Create a JOI schema
@@ -72,6 +72,16 @@ app.get('/',
   someController.doStuff);
 ```
 
+#### Passing in Joi Options
+Every method allows you to pass in an optional config of all the [Joi options][3] you want to run on the schema. For example:
+
+```
+app.post('/blah',
+  vayder.validateBody(blahSchema, {abortEarly: false}),
+  (req, res) => { res.send('Hello World!');}
+);
+```
+
 #### Organizing Schemas
 A useful way to organize / manage the schema imports is by creating a directory tree called `models/validations` in your project.
 
@@ -126,3 +136,4 @@ app.get('/',
 
 [1]: https://github.com/hapijs/joi
 [2]: https://github.com/continuationlabs/celebrate
+[3]: https://github.com/hapijs/joi/blob/master/API.md#validatevalue-schema-options-callback
