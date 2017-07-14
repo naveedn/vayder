@@ -1,5 +1,5 @@
 # VAYDER
-A library that allows you to validate inputs on express routes via middlewares. It leverages the power of [Joi][1] and [Celebrate][2] with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your express server.
+A library that allows you to validate inputs on express routes via middlewares. It leverages the power of [Joi][1] and [Celebrate][2] with an easy, fluent interface for the middlewares to make it effortless to build a robust validation layer on your [Express][4] server.
 
 ## How to Use
 ### 1) Create a JOI schema
@@ -138,3 +138,4 @@ app.get('/',
 [1]: https://github.com/hapijs/joi
 [2]: https://github.com/continuationlabs/celebrate
 [3]: https://github.com/hapijs/joi/blob/master/API.md#validatevalue-schema-options-callback
+[4]: https://expressjs.com/
