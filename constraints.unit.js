@@ -1,10 +1,13 @@
 'use strict';
 
 const chai = require('chai');
+const dirtyChai = require('dirty-chai');
 const expect = chai.expect;
 const httpMocks = require('node-mocks-http');
 const constraints = require('./constraints');
 const Joi = require('joi');
+
+chai.use(dirtyChai);
 
 describe('Constraints Middleware', () => {
   const headerSchema = Joi.object().keys({
@@ -293,7 +296,7 @@ describe('Constraints Middleware', () => {
       if (err && err.isJoi) {
         done(err);
       } else {
-        expect(req.params.unknownParameterBeingPassedIn).to.not.exist;
+        expect(req.params.unknownParameterBeingPassedIn).to.not.exist();
         done();
       }
     });
