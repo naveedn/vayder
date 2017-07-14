@@ -270,4 +270,32 @@ describe('Constraints Middleware', () => {
       }
     });
   });
+
+  it('should allow for options to be passed into the function', (done) => {
+    req.params = {
+      a: {
+        b: 'blah blah',
+        c: 1234234,
+      },
+      d: {
+        e: true,
+      },
+      unknownParameterBeingPassedIn: 'woohooooo',
+    };
+
+    const options = {
+      stripUnknown: true,
+    };
+
+    validatemw = constraints.validateParams(paramsSchema, options);
+
+    validatemw(req, res, (err) => {
+      if (err && err.isJoi) {
+        done(err);
+      } else {
+        expect(req.params.unknownParameterBeingPassedIn).to.not.exist;
+        done();
+      }
+    });
+  });
 });
